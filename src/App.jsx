@@ -1,4 +1,5 @@
 import React from 'react';
+import NoteForm from "./components/NoteForm.jsx";
 
 const App = () => {
     return (
@@ -6,6 +7,7 @@ const App = () => {
         <h2 className="text-2xl font-bold mb-4 text-center">
             📝 Notes App
         </h2>
+            <NoteForm />
         </div>
     );
 };
