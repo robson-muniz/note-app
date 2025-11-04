@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const NoteForm = () => {
+const NoteForm = ({notes, setNotes}) => {
     const [formData, setFormData] = useState({
         title: '',
         category: 'Work',
@@ -8,7 +8,7 @@ const NoteForm = () => {
         description: '',
     })
 
-    // FIX 1: Added handleChange function to update form data
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prevData => ({
@@ -17,16 +17,27 @@ const NoteForm = () => {
         }));
     }
 
-    // FIX 2: Proper form submission handler
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Form submitted:', formData);
-        // Add your form submission logic here
+        // Validation
+        if(!formData.title || !formData.description) return;
+        //Create Note object
+        const newNote = {id: Date.now(), ...formData};
+        //Add notes to State
+        setNotes([...notes, newNote]);
+        //Reset Data
+        setFormData({
+            title: '',
+            category: 'Work',
+            priority: 'Medium',
+            description: '',
+        })
+
     }
 
     return (
-        // FIX 3: Added onSubmit handler to form
-        <form className="mb-6" onSubmit={handleSubmit}>
+       <form className="mb-6" onSubmit={handleSubmit}>
             <div className="mb-4">
                 <label htmlFor="title" className="block font-semibold">
                     Title:
