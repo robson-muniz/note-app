@@ -15,14 +15,14 @@ const NoteForm = () => {
                 <input
                     type="text"
                     className="w-full p-2 border rounded-lg"
-                    value={title} // ERROR 4: Using correct state variable
+                    value={title} // ERROR 4: Using correct s http://localhost:5173tate variable
                     onChange={(e) => setTitle(e.target.value)} // ERROR 5: Using correct setter
-                />
+                /> http://localhost:5173
             </div>
 
             <div className="mb-4">
                 <label htmlFor="priority" className="block font-semibold">
-                    Priority:
+                    Priority:http://localhost:5173
                 </label>
                 <select
                     className="w-full p-2 border rounded-lg"
@@ -60,6 +60,7 @@ const NoteForm = () => {
                     onChange={(e) => setDescription(e.target.value)}
                 ></textarea>
             </div>
+            
             <button className="w-full bg-purple-500 text-white py-2 rounded-lg cursor-pointer hover: bg-purple-600">
                 Add Note
             </button>
