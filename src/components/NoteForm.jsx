@@ -1,33 +1,53 @@
 import React, {useState} from 'react';
 
 const NoteForm = () => {
-    const [title, setTitle] = useState("") // ERROR 1: Fixed variable name and setter
-    const [priority, setPriority] = useState("Medium")
-    const [category, setCategory] = useState("Work")
-    const [description, setDescription] = useState("") // ERROR 2: Removed duplicate 'description' state
+    const [formData, setFormData] = useState({
+        title: '',
+        category: 'Work',
+        priority: 'Medium',
+        description: '',
+    })
+
+    // FIX 1: Added handleChange function to update form data
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevData => ({
+            ...prevData,
+            [name]: value
+        }));
+    }
+
+    // FIX 2: Proper form submission handler
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Form submitted:', formData);
+        // Add your form submission logic here
+    }
 
     return (
-        <form className="mb-6">
+        // FIX 3: Added onSubmit handler to form
+        <form className="mb-6" onSubmit={handleSubmit}>
             <div className="mb-4">
-                <label htmlFor="title" className="block font-semibold"> {/* ERROR 3: Fixed htmlFor to match input */}
+                <label htmlFor="title" className="block font-semibold">
                     Title:
                 </label>
                 <input
                     type="text"
+                    name="title"
                     className="w-full p-2 border rounded-lg"
-                    value={title} // ERROR 4: Using correct s http://localhost:5173tate variable
-                    onChange={(e) => setTitle(e.target.value)} // ERROR 5: Using correct setter
-                /> http://localhost:5173
+                    value={formData.title}
+                    onChange={handleChange}
+                />
             </div>
 
             <div className="mb-4">
                 <label htmlFor="priority" className="block font-semibold">
-                    Priority:http://localhost:5173
                 </label>
                 <select
+                    name="priority"
                     className="w-full p-2 border rounded-lg"
-                    value={priority}
-                    onChange={(e) => setPriority(e.target.value)}
+                    value={formData.priority}
+                    onChange={handleChange}
                 >
                     <option value="High">🔴 High</option>
                     <option value="Medium">🟠 Medium</option>
@@ -40,9 +60,10 @@ const NoteForm = () => {
                     Category:
                 </label>
                 <select
+                    name="category"
                     className="w-full p-2 border rounded-lg"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
+                    value={formData.category}
+                    onChange={handleChange}
                 >
                     <option value="Work">💼 Work</option>
                     <option value="Personal">🏚️ Personal</option>
@@ -55,13 +76,18 @@ const NoteForm = () => {
                     Description:
                 </label>
                 <textarea
-                    className="w-full p-2 border rounded-lg" // ERROR 6: Removed type="text" from textarea
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
+                    name="description"
+                    className="w-full p-2 border rounded-lg"
+                    value={formData.description}
+                    onChange={handleChange}
                 ></textarea>
             </div>
-            
-            <button className="w-full bg-purple-500 text-white py-2 rounded-lg cursor-pointer hover: bg-purple-600">
+
+            {/* FIX 10: Fixed hover class syntax */}
+            <button
+                type="submit"
+                className="w-full bg-purple-500 text-white py-2 rounded-lg cursor-pointer hover:bg-purple-600"
+            >
                 Add Note
             </button>
         </form>
