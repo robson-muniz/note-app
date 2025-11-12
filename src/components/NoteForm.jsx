@@ -8,7 +8,6 @@ const NoteForm = ({notes, setNotes}) => {
         description: '',
     })
 
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prevData => ({
@@ -67,7 +66,7 @@ const NoteForm = ({notes, setNotes}) => {
             </div>
 
             <div className="mb-4">
-                <label htmlFor="category" className="block font-semibold">
+                <label htmlFor="category" clavaluessName="block font-semibold">
                     Category:
                 </label>
                 <select
