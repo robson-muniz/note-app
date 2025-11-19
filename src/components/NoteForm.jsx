@@ -28,7 +28,7 @@ const NoteForm = ({notes, setNotes}) => {
         setFormData({
             title: '',
             category: 'Work',
-            category: 'Medium',
+            priority: 'Medium',
             description: '',
         });
     };
@@ -51,11 +51,10 @@ const NoteForm = ({notes, setNotes}) => {
                         onChange={handleChange}
                         required
                     />
-
                     <SelectInput
-                        label="category"
-                        name="category"
-                        value={formData.category}
+                        label="Priority"
+                        name="priority"
+                        value={formData.priority}
                         onChange={handleChange}
                         options={[
                             {value: 'High', label: '🔴 High'},
