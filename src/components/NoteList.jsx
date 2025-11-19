@@ -13,6 +13,14 @@ const NoteList = ({notes, deleteNote}) => {
                 <div
                     className="p-4 bg-white rounded-lg shadow-md border-l-4"
                     key={note.id}
+                    style={{
+                        borderLeftColor:
+                            note.priority === 'High'
+                                ? 'red'
+                                : note.priority === 'Medium'
+                                    ? 'orange'
+                                    : 'green',
+                    }}
                 >
                     <h3 className="text-lg font-bold">{note.title}</h3>
 

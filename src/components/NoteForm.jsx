@@ -7,7 +7,7 @@ const NoteForm = ({notes, setNotes}) => {
     const [formData, setFormData] = useState({
         title: '',
         category: 'Work',
-        category: 'Medium',
+        priority: 'Medium',
         description: '',
     });
 
