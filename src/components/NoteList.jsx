@@ -9,7 +9,7 @@ const NoteList = ({notes}) => {
 
     return (
         <div className="space-y-4">
-            {notes.map((note, i) => (
+            {notes.map((note) => (
                 <div className="p-4 bg-white rounded-l shadow-md border-l-4"
                 key={notes.id}>
                     <h3 className="text-lg font-bold">
